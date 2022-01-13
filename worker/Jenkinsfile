@@ -36,6 +36,9 @@ pipeline {
         failure {
             echo 'The pipeline execution has failed'
         }
+        success {
+            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+        }
         always {
             echo 'Build pipeline is complete'
         }
