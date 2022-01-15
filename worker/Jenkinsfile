@@ -42,9 +42,15 @@ pipeline {
             }
         }
     }
+
     post {
         failure {
-            echo 'The pipeline execution has failed'
+            slackSend (channel: "instavoce-cd",
+             message: "Build Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} <${env.BUILD_URL}|Open>)"
+        }
+        success {
+            slackSend (channel: "instavoce-cd",
+             message: "Build Succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER} <${env.BUILD_URL}|Open>)"
         }
         always {
             echo 'Build pipeline is complete'
