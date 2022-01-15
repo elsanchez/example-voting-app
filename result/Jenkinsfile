@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 echo 'Bulding install'
-                dir('worker') {
+                dir('result') {
                     sh 'npm install'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 echo 'Running test on result app'
-                dir('worker') {
+                dir('result') {
                     sh 'npm install'
                     sh 'npm test'
                 }
