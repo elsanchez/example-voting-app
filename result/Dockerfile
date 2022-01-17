@@ -1,12 +1,12 @@
 FROM node:8.16.0-alpine
 
-WORKDIR /app 
+WORKDIR /app
 
-COPY . . 
+COPY . .
 
-RUN npm install  && \ 
-    npm audit fix 
-    
+RUN npm install  && \
+    npm audit fix
+
 EXPOSE 4000
 
-CMD npm start 
+CMD npm start
