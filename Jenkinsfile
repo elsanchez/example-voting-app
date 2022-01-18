@@ -75,7 +75,7 @@ pipeline {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
                         def workerImage = docker.build("elsanchez/worker:v${env.BUILD_ID}", "./worker")
                         workerImage.push()
-                        workerImage.push("${env.BRANCH_NAME}")
+                        workerImage.push("latest")
                     }
                 }
             }
@@ -129,7 +129,7 @@ pipeline {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
                         def resultImage = docker.build("elsanchez/result:v${env.BUILD_ID}", "./result")
                         resultImage.push()
-                        resultImage.push("${env.BRANCH_NAME}")
+                        resultImage.push("latest")
                     }
                 }
             }
@@ -185,7 +185,7 @@ pipeline {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
                         def voteImage = docker.build("elsanchez/vote:v${env.BUILD_ID}", "./vote")
                         voteImage.push()
-                        voteImage.push("${env.BRANCH_NAME}")
+                        voteImage.push("latest")
                     }
                 }
             }

@@ -9,7 +9,7 @@ networks:
 
 services:
   vote:
-    image: elsanchez/vote:master
+    image: elsanchez/vote:latest
     build: ./vote
     ports:
       - 5000:80
@@ -33,7 +33,7 @@ services:
       - instavote
 
   result:
-    image: elsanchez/result:master
+    image: elsanchez/result:latest
     build: ./result
     ports:
       - 5001:4000
@@ -43,7 +43,7 @@ services:
       - instavote
 
   worker:
-    image: elsanchez/worker:master
+    image: elsanchez/worker:latest
     build: ./worker
     depends_on:
       - redis
