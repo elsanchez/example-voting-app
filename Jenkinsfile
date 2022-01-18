@@ -11,9 +11,9 @@ pipeline {
                     args '-v $HOME/.m2:/root/.m2'
                 }
             }
-            //when {
-                //changeset "**/worker/**"
-            //}
+            when {
+                changeset "**/worker/**"
+            }
             steps {
                 echo 'Compiling worker app'
                 dir('worker') {
@@ -30,9 +30,9 @@ pipeline {
                 }
             }
 
-            //when {
-                //changeset "**/worker/**"
-            //}
+            when {
+                changeset "**/worker/**"
+            }
             steps {
                 echo 'Running Unit Tests on worker app'
                 dir('worker') {
@@ -48,10 +48,10 @@ pipeline {
                     args '-v $HOME/.m2:/root/.m2'
                 }
             }
-            //when {
-                //branch 'master'
-                //changeset "**/worker/**"
-            //}
+            when {
+                branch 'master'
+                changeset "**/worker/**"
+            }
             steps {
                 echo 'Packaging woker app'
                 dir('worker') {
@@ -65,10 +65,10 @@ pipeline {
 
             agent any
 
-            //when {
-                //branch 'master'
-                //changeset "**/worker/**"
-            //}
+            when {
+                branch 'master'
+                changeset "**/worker/**"
+            }
             steps {
                 echo 'Packaging woker app with docker'
                 script {
@@ -87,9 +87,9 @@ pipeline {
                     image 'node:8.16.0-alpine'
                 }
             }
-            //when {
-                //changeset "**/result/**"
-            //}
+            when {
+                changeset "**/result/**"
+            }
             steps {
                 echo 'Bulding install'
                 dir('result') {
@@ -103,9 +103,9 @@ pipeline {
                     image 'node:8.16.0-alpine'
                 }
             }
-            //when {
-                //changeset "**/result/**"
-            //}
+            when {
+                changeset "**/result/**"
+            }
             steps {
                 echo 'Running test on result app'
                 dir('result') {
@@ -119,10 +119,10 @@ pipeline {
 
             agent any
 
-            //when {
-                //branch 'master'
-                //changeset "**/result/**"
-            //}
+            when {
+                branch 'master'
+                changeset "**/result/**"
+            }
             steps {
                 echo 'Packaging result app with docker'
                 script {
@@ -142,9 +142,9 @@ pipeline {
                     args '--user root'
                 }
             }
-            //when {
-                //changeset "**/vote/**"
-            //}
+            when {
+                changeset "**/vote/**"
+            }
             steps {
                 echo 'Bulding install'
                 dir('vote') {
@@ -159,9 +159,9 @@ pipeline {
                     args '--user root'
                 }
             }
-            //when {
-                //changeset "**/vote/**"
-            //}
+            when {
+                changeset "**/vote/**"
+            }
             steps {
                 echo 'Running test on vote app'
                 dir('vote') {
@@ -175,10 +175,10 @@ pipeline {
 
             agent any
 
-            //when {
-                //branch 'master'
-                //changeset "**/vote/**"
-            //}
+            when {
+                branch 'master'
+                changeset "**/vote/**"
+            }
             steps {
                 echo 'Packaging vote app with docker'
                 script {
