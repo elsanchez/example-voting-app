@@ -204,7 +204,6 @@ pipeline {
       agent any
       when {
         branch 'master'
-        changeset '**/worker/**'
       }
       steps {
         sh 'docker-compose up -d'
