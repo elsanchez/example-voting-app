@@ -25,6 +25,5 @@ class VoteUnitTest(unittest.TestCase):
         result = self.app.get('/')
         assert 'Processed by' in str(result.data)
 
-
 if __name__ == '__main__':
     unittest.main()
